@@ -17,6 +17,29 @@ function Food({favorites}) {
   )
 }
 
+
+const foodILike = [
+  {
+    food : "potatoes",
+    url: "https://img.etimg.com/thumb/msid-63347631,width-1200,height-900,imgsize-24532,overlay-etpanache/photo.jpg"
+  },
+  {
+    food : "coffee",
+    url : "https://foodstuffmall.com/wp-content/uploads/2020/02/Make-Your-Celebrations-a-Bit-More-Joyful-By-Serving-Coffee.jpg"
+  }
+]
+
+function FoodImg({menu, pic}){
+  return (
+    <div className="img">
+      <p>I like {menu}</p>
+      <img src={pic}/>
+    </div>
+  )
+}
+
+
+
 //react : Virtual DOM 을 위한 컴포넌트 생성
 // react appication은 하나의 compnent만 rendering 할 수 있다! 
 //  추가 component는 [App] component 밑으로 import 해주어야 한다! (App.js)
@@ -30,7 +53,8 @@ function App() {
       <Food favorites="rice"/>
       <Food favorites="coffee"/>
 
-
+      {foodILike.map((dish,index) => <FoodImg menu={dish.food} pic={dish.url} key={index}/>)}
+  
     </div>
   );
 }

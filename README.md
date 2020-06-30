@@ -1,8 +1,8 @@
 # 2020 REACT Study (with NOMAD CODERS)
 
 목차
-[1. react 설치](#1.-react-설치)
-[2. react 기본구성](#2.-react-기본구성)
+[1. react 설치](#-1.-react-설치)
+[2. react 기본구성](#-2.-react-기본구성)
 
 ## 1. react 설치
 
@@ -25,7 +25,7 @@ $ npm run
 
 `react application 실행 : 서버 자동 설정해줌!`
 
-> - git 올리기
+> git 올리기
 >   > 1.  `git init` : git 초기화
 >   > 2.  `git remote add origin 'repository URL'` : 원격 저장소 연결
 >   > 3.  `git add .` : 커밋할 파일 준비

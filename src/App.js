@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 
 import Test from "./Test"; //컴포넌트 Import (1)
 

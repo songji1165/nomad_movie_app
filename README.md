@@ -53,39 +53,44 @@ $ npm run
 ---
 
 ## react component 만들기
-- component : HTML을 반환하는 함수
-    1. ./src/App.js : component 생성
-        ```js
-            import React from 'react';
-
-            function App(){
-                return(
-                    <div className="App">Hello World</div>
-                        // rendering 될 코드는 JSX 방식으로 사용하기!!
-                        // JSX문법 안에서 javascript를 사용하고 싶을 경우 : { } 사용하기
-                )
-            }
-
-            export default App;
-        ```
-        ``JSX : REACT에서만 사용하는 개념으로 javascript와 문법이 조금 다르다 (HTML + javascript)``
-    
-    2. ./src/index.js : virtual DOM 위치 선언 (component)
-        ```js
-            import React from "react";
-            import ReactDOM from "react-dom";
-            import App from "./App";
-
-            ReactDOM.render(<App/>,document.getElementById("root"));
-                            // (X) App : 기본 js에서의 변수명 입력하듯이 하면 안됨
-                            // (O) <App/> : [JSX] 방식 사용해야함 - JSX에서 태그는 꼭 닫아야 함 </>
-        ```
-
-1. react application 하나에 하나의 component만 rendering 가능하다
+1. component : HTML을 반환하는 함수
+2. react application 하나에 하나의 component만 rendering 가능하다
     - 부모 component에 자식 component 추가하는 방식으로 component 만들기
         - 추가 component는 모두 [App component] 안에 넣기
 
-2. ``Component Props`` : component간의 data 공유가 가능하다! 
+***
+<u>Component 특징</u>
+
+#### 1. JSX 
+1. ./src/App.js : component 생성
+```js
+    import React from 'react';
+
+    function App(){
+        return(
+            <div className="App">Hello World</div>
+                // rendering 될 코드는 JSX 방식으로 사용하기!!
+                // JSX문법 안에서 javascript를 사용하고 싶을 경우 : { } 사용하기
+        )
+    }
+
+    export default App;
+```
+``JSX : REACT에서만 사용하는 개념으로 javascript와 문법이 조금 다르다 (HTML + javascript)``
+
+2. ./src/index.js : virtual DOM 위치 선언 (component)
+```js
+    import React from "react";
+    import ReactDOM from "react-dom";
+    import App from "./App";
+
+    ReactDOM.render(<App/>,document.getElementById("root"));
+                    // (X) App : 기본 js에서의 변수명 입력하듯이 하면 안됨
+                    // (O) <App/> : [JSX] 방식 사용해야함 - JSX에서 태그는 꼭 닫아야 함 </>
+```
+
+#### 2. ``Component Props`` 
+1. component간의 data 공유가 가능하다! 
     ```js
         function Hello(props){
             return (
@@ -99,11 +104,8 @@ $ npm run
                 )
             }
     ```
-    > component props의 유효성 체크 : **prop-types**
-    >> 1. ``$ npm i prop-types`` 
-    >> 2. App.js에 ``import PropType from "prop-types;" 추가
 
-3. component는 유일해야 한다. 중복 X
+2. component는 유일해야 한다. 중복 X
     - component 재활용시에 자주하는 실수 : key 속성을 통해 고유의 component 값을 생성해준다.
         - key props는 하위 coponent로 값 전달 X
 
@@ -126,4 +128,14 @@ $ npm run
                 )
             }
     ```
+> component props의 유효성 체크 : **prop-types**
+>> 1. ``$ npm i prop-types`` 
+>> 2. App.js에 ``import PropType from "prop-types;" 추가
+>> ```js
+>>  component.propTypes = {
+>>  name : PropTypes.string.isRequired
+>>    }
+>> ```
+>> ``다양한 prop 유효성 검사기를 제공한다!``
+>> [prop types 참고] (https://www.npmjs.com/package/prop-types)
 

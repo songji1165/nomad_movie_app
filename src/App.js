@@ -18,7 +18,6 @@ function Food({favorites}) {
   )
 }
 
-
 const foodILike = [
   {
     food : "potatoes",
@@ -26,19 +25,26 @@ const foodILike = [
   },
   {
     food : "coffee",
-    url : "https://foodstuffmall.com/wp-content/uploads/2020/02/Make-Your-Celebrations-a-Bit-More-Joyful-By-Serving-Coffee.jpg"
+    url : "https://foodstuffmall.com/wp-content/uploads/2020/02/Make-Your-Celebrations-a-Bit-More-Joyful-By-Serving-Coffee.jpg",
+    rating : 4.5
   }
 ]
 
-function FoodImg({menu, pic}){
+function FoodImg({menu, pic, rate}){
   return (
     <div className="img">
       <p>I like {menu}</p>
-      <img src={pic}/>
+      <h4>{rate}/5.0</h4>
+      <img src={pic} alt={menu}/>
     </div>
   )
 }
 
+FoodImg.propTypes = {
+  menu : PropTypes.string.isRequired,
+  pic: PropTypes.string.isRequired,
+  rate : PropTypes.number
+}
 
 
 //react : Virtual DOM 을 위한 컴포넌트 생성
@@ -54,7 +60,9 @@ function App() {
       <Food favorites="rice"/>
       <Food favorites="coffee"/>
 
-      {foodILike.map((dish,index) => <FoodImg menu={dish.food} pic={dish.url} key={index}/>)}
+      {foodILike.map((dish,index) => 
+        <FoodImg menu={dish.food} pic={dish.url} key={index} rate={dish.rating}/>
+        )}
   
     </div>
   );

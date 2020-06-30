@@ -1,71 +1,49 @@
-import React from 'react';
-import PropTypes from 'prop-types'
+import React from "react";
+import PropTypes from "prop-types";
 
-import Test from "./Test"; //컴포넌트 Import (1)
+// class Component 는 state(동적 data)를 사용할 수 있다.
+// class Component는 상위 component의 속성을 상속받을 수 있다.
+// React는 모든 class Component의 render method를 알아서 redering 함.
+class App extends React.Component {
+  //App component는 React component의 속성을 상속 받는다.
 
-//컴포넌트 Import (2)
-function Test2(props){
-  console.log(props);
-  return (
-  <h2>This is Food Component : {props.fav}</h2>
-  )
-}
+  //state는 Object이다.
+  state = {
+    count: 0
+  };
 
-function Food({favorites}) {
-  console.log(favorites)
-  return (
-  <h3>I like {favorites}</h3>
-  )
-}
+  add = () => {
+    console.log("add");
+    // this.state.count = 1;
+    /**
+     * state는 직접적으로 수정하면 X,
+     *  react는 render function을 refresh하지 않으므로 수동으로 때마다 refresh 해야 함
+     *
+     * setState사용으로 해당 기능을 대체할 수 있음
+     **/
+    this.setState({ count: this.state.count + 1 });  
+  };
 
-const foodILike = [
-  {
-    food : "potatoes",
-    url: "https://img.etimg.com/thumb/msid-63347631,width-1200,height-900,imgsize-24532,overlay-etpanache/photo.jpg"
-  },
-  {
-    food : "coffee",
-    url : "https://foodstuffmall.com/wp-content/uploads/2020/02/Make-Your-Celebrations-a-Bit-More-Joyful-By-Serving-Coffee.jpg",
-    rating : 4.5
+  minus = () => {
+    console.log("minus");
+    // setState 안에 state를 또 불러오는 것은 성능상 좋지 않다. 
+    //this.setState({ count: this.state.count - 1 }); 
+    this.setState(current => ({ count: current.count - 1 }));
+
+    //setState : 해당 메소드 호출시, render method를 변경된 data로 refresh 함.
+  };
+
+  render() {
+    return (
+      <div>
+        <h1>This is Class Component</h1>
+        <h4>The number is : {this.state.count}</h4>
+        <button onClick={this.add}>up</button>
+        <button onClick={this.minus}>down</button>
+      </div>
+    );
+    //vue 클릭이벤트와 동일하게 react도 클릭이벤트를 갖고 있음. onClick
   }
-]
-
-function FoodImg({menu, pic, rate}){
-  return (
-    <div className="img">
-      <p>I like {menu}</p>
-      <h4>{rate}/5.0</h4>
-      <img src={pic} alt={menu}/>
-    </div>
-  )
-}
-
-FoodImg.propTypes = {
-  menu : PropTypes.string.isRequired,
-  pic: PropTypes.string.isRequired,
-  rate : PropTypes.number
-}
-
-
-//react : Virtual DOM 을 위한 컴포넌트 생성
-// react appication은 하나의 compnent만 rendering 할 수 있다! 
-//  추가 component는 [App] component 밑으로 import 해주어야 한다! (App.js)
-//    추가 component의 기본 틀은 App.js와 동일하게 작성하면 된다.
-function App() {
-  return (
-    <div className="App">Hello
-      <Test/>   
-      <Test2 name="values" fav="potato" something={true} others={[1,2,3,"that",true]}/> 
-      <Food favorites="potatoes"/>
-      <Food favorites="rice"/>
-      <Food favorites="coffee"/>
-
-      {foodILike.map((dish,index) => 
-        <FoodImg menu={dish.food} pic={dish.url} key={index} rate={dish.rating}/>
-        )}
-  
-    </div>
-  );
 }
 
 export default App;

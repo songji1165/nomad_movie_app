@@ -60,9 +60,14 @@ $ npm run
 
 ***
 <u>Component 특징</u>
+1. Function Component
+2. Class Component
+3. JSX
+4. Component Props
+5. State
 
-#### 1. JSX 
-1. ./src/App.js : component 생성
+#### ``JSX ``
+1. ./src/App.js : Function Component 생성
 ```js
     import React from 'react';
 
@@ -89,7 +94,7 @@ $ npm run
                     // (O) <App/> : [JSX] 방식 사용해야함 - JSX에서 태그는 꼭 닫아야 함 </>
 ```
 
-#### 2. ``Component Props`` 
+#### ``Component Props`` 
 1. component간의 data 공유가 가능하다! 
     ```js
         function Hello(props){
@@ -130,12 +135,45 @@ $ npm run
     ```
 > component props의 유효성 체크 : **prop-types**
 >> 1. ``$ npm i prop-types`` 
->> 2. App.js에 ``import PropType from "prop-types;" 추가
+>> 2. App.js에 ``import PropType from "prop-types";`` 추가
 >> ```js
 >>  component.propTypes = {
 >>  name : PropTypes.string.isRequired
 >>    }
 >> ```
 >> ``다양한 prop 유효성 검사기를 제공한다!``
->> [prop types 참고] (https://www.npmjs.com/package/prop-types)
+>> [ prop types 참고 ](https://www.npmjs.com/package/prop-types)
+
+#### State (동적인 data)
+- Class Component에서 State를 사용할 수 있다.
+- State는 Object이다.
+- SetState : state 변경시 사용하는 method 
+   - STATE를 직접 변경하여도, Class Component의 **render method**는 refresh되지 않음 
+        => **setState Method를 통해 render Method를 refresh 함!** (변경된 state data를 재 redering하는 것)
+
+1. ./src/App.js : Class Component 생성
+```js
+//App Class는 react Component로부터 properties를 상속받음
+class App extends React.Component {
+
+    state = {
+        count : 0
+    };
+
+    handliClick = () => {
+        //state data 변경은 setState 사용 !!
+        this.setState(current => ({ count : current.count + 1}));
+    }
+
+    //class component의 render method를 virtual DOM rendering
+    render() {
+        return(
+            <div>{this.state.count}
+                <button onClick={this.handleClick}>click me</button>
+            </div>
+             //vue 클릭이벤트와 동일하게 react도 클릭이벤트를 갖고 있음. onClick
+        )
+    }
+}
+```
 

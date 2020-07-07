@@ -290,39 +290,38 @@ class App extends React.Component {
 : 네비게이션을 만들어주는 패키지
 1. `$ npm install react-router-dom` 
 2. 주요 속성
-  1. **`HashRouter`** , BrowserRouter
-      - `HashRouter` : #으로 router를 구분함 => 다른 서버를 같이 사용할 경우 router구분하기 용이함!
-      - HashRouter사용을 권장함!
+    1. **`HashRouter`** , BrowserRouter
+        - `HashRouter` : #으로 router를 구분함 => 다른 서버를 같이 사용할 경우 router구분하기 용이함!
+        - HashRouter사용을 권장함!
+        ```js
+          //App.js
+          import { HashRouter, Route } from "react-router-dom";
+          //...
 
-  ```js
-    //App.js
-    import { HashRouter, Route } from "react-router-dom";
-    //...
+          function App() {
+            return (
+                <HashRouter>
+                  <Navigation />
+                  <Route path="/" exact={true} component={Home} />
+                  <Route path="/about" component={About} />
+                  <Route path="/movie/:id" component={MovieDetail} />
+                </HashRouter>
+              );
+              //<HashRouter> 안에 <Route>component를 통해 router기능을 사용하게된다!
+            }
 
-    function App() {
-      return (
-          <HashRouter>
-            <Navigation />
-            <Route path="/" exact={true} component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/movie/:id" component={MovieDetail} />
-          </HashRouter>
-        );
-        //<HashRouter> 안에 <Route>component를 통해 router기능을 사용하게된다!
-      }
+            export default App;
+        ```
 
-      export default App;
-  ```
-
-    2. **` Router `**
-      - 2가지 Prop 기능
-        1. path 설정
-        2. 해당 path에 연결될 component (렌더링할 component) 
-      ```js
-        <Route path="/" exact={true} component={Home} /> 
-        //exact :
-        //  path가 겹치면 해당 component가 모두 렌더링된다. exact를 통해 정확한 path 렌더링만 하게 한다!
-      ```
+      2. **` Router `**
+        - 2가지 Prop 기능
+          1. path 설정
+          2. 해당 path에 연결될 component (렌더링할 component) 
+        ```js
+          <Route path="/" exact={true} component={Home} /> 
+          //exact :
+          //  path가 겹치면 해당 component가 모두 렌더링된다. exact를 통해 정확한 path 렌더링만 하게 한다!
+        ```
 
     3. **`Link`**
       - Link는 Router안에 있어야 기능을 할 수 있다.
@@ -356,7 +355,7 @@ class App extends React.Component {
       ```
       >>`<Link to={{}}>`에 속성을 object형식으로 추가할 수 있다.
 
-      4. **`redirect`**
+    4. **`redirect`**
         - path에 대한 속성.
         - `this.props.history` : router 속성을 통해 경로 변경을 할 수 있다.
         - `this.props.location` : 현재 path를 알 수 있다.

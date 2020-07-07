@@ -193,7 +193,7 @@ class App extends React.Component {
 ## react Component Life Cycle
 : react component가 생성 ~ 삭제까지 이루어지는 순서
 ![react-life_cycle](https://miro.medium.com/max/1400/1*hSO--5BPT1K_YK6VqRy4vg.png)
-1. **자바스크립트 내 `constructor` 단계**
+#### 1. **자바스크립트 내 `constructor` 단계**
   - 생성자 메소드로서 component가 처음 만들어 질 때 실행.
   - 최초 component가 mount되기 전 실행.
   - 일반적인 실행 이벤트 : 
@@ -216,7 +216,7 @@ class App extends React.Component {
     >> 1. constructor를 사용시, `super(props)`를 반드시 호출하여 this.props 를 정의해 주어야 한다. 버그가 발생할 수 있다.
     >> 2. constructor 내부에서 `setState` 등의 업데이트를 사용하면 안 된다. Mount되기전 state업데이는 바람직하지 않다.
 
-2. **`Mount` 단계**
+#### 2. **`Mount` 단계**
   - component가 DOM에 Mount될 때, 실행.
   1. `render`
     - class Component에 반드시 필요한 메소드
@@ -257,7 +257,7 @@ class App extends React.Component {
       }
     ```
 
-3. **`Updating` 단계**
+#### 3. **`Updating` 단계**
   - component가 update 될때 (setState)
   1. `render`
     - render메소드 재실행 됨

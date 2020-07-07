@@ -315,45 +315,46 @@ class App extends React.Component {
 
       2. **` Router `**
         - 2가지 Prop 기능
-          1. path 설정
-          2. 해당 path에 연결될 component (렌더링할 component) 
-        ```js
-          <Route path="/" exact={true} component={Home} /> 
-          //exact :
-          //  path가 겹치면 해당 component가 모두 렌더링된다. exact를 통해 정확한 path 렌더링만 하게 한다!
-        ```
+            1. path 설정
+            2. 해당 path에 연결될 component (렌더링할 component) 
+
+          ```js
+            <Route path="/" exact={true} component={Home} /> 
+            //exact :
+            //  path가 겹치면 해당 component가 모두 렌더링된다. exact를 통해 정확한 path 렌더링만 하게 한다!
+          ```
 
     3. **`Link`**
       - Link는 Router안에 있어야 기능을 할 수 있다.
       - 새로고침시키는 <a>태그 대신, react router `<Link>`사용을 하면 새로고침없이 화면전환이 됨. (component 전환)
-      ```js
-        //Navigation.js
-        import {Link} from "react-router-dom";
-        //...
+        ```js
+          //Navigation.js
+          import {Link} from "react-router-dom";
+          //...
 
-        function Navigation () {
-            //a 태그는 html을 새로고침한다
-            //react에서 SPA로써 새로고침없이 화면전환만 원할 경우 => react-router-dom의 link 메소드 사용하기! 
-            return <div className="navi">
-                <Link to="/">Home</Link>
-                <Link to="/about">About</Link>
-            </div>
-        }
+          function Navigation () {
+              //a 태그는 html을 새로고침한다
+              //react에서 SPA로써 새로고침없이 화면전환만 원할 경우 => react-router-dom의 link 메소드 사용하기! 
+              return <div className="navi">
+                  <Link to="/">Home</Link>
+                  <Link to="/about">About</Link>
+              </div>
+          }
 
-        export default Navigation
-      ```
+          export default Navigation
+        ```
 
-      ```js
-        <Link 
-            to={{
-                pathname:`/movie/${id}`,
-                state:{
-                    id, year, title, summary, poster, genres
-                }
-            }}
-        >
-      ```
-      >>`<Link to={{}}>`에 속성을 object형식으로 추가할 수 있다.
+        ```js
+          <Link 
+              to={{
+                  pathname:`/movie/${id}`,
+                  state:{
+                      id, year, title, summary, poster, genres
+                  }
+              }}
+          >
+        ```
+        >>`<Link to={{}}>`에 속성을 object형식으로 추가할 수 있다.
 
     4. **`redirect`**
         - path에 대한 속성.

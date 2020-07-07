@@ -292,26 +292,27 @@ class App extends React.Component {
 2. 주요 속성
   1. **`HashRouter`**, BrowserRouter
     - `HashRouter` : #으로 router를 구분함 => 다른 서버를 같이 사용할 경우 router구분하기 용이함!
-      - HashRouter사용을 권장함!
-  ```js
-    //App.js
-     import { HashRouter, Route } from "react-router-dom";
-     ...
+    - HashRouter사용을 권장함!
+    ```js
+      //App.js
+      import { HashRouter, Route } from "react-router-dom";
+      //...
 
-     function App() {
-      return (
-          <HashRouter>
-            <Navigation />
-            <Route path="/" exact={true} component={Home} />
-            <Route path="/about" component={About} />
-            <Route path="/movie/:id" component={MovieDetail} />
-          </HashRouter>
-        );
-        //<HashRouter> 안에 <Route>component를 통해 router기능을 사용하게된다!
-      }
+      function App() {
+        return (
+            <HashRouter>
+              <Navigation />
+              <Route path="/" exact={true} component={Home} />
+              <Route path="/about" component={About} />
+              <Route path="/movie/:id" component={MovieDetail} />
+            </HashRouter>
+          );
+          //<HashRouter> 안에 <Route>component를 통해 router기능을 사용하게된다!
+        }
 
-      export default App;
-  ```
+        export default App;
+    ```
+
     2. **` Router `**
       - 2가지 Prop 기능
         1. path 설정
@@ -328,7 +329,7 @@ class App extends React.Component {
       ```js
         //Navigation.js
         import {Link} from "react-router-dom";
-        ...
+        //...
 
         function Navigation () {
             //a 태그는 html을 새로고침한다
@@ -368,6 +369,6 @@ class App extends React.Component {
                 }
             }
           
-          ...
+          //...
         }
         ```

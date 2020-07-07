@@ -290,9 +290,10 @@ class App extends React.Component {
 : 네비게이션을 만들어주는 패키지
 1. `$ npm install react-router-dom` 
 2. 주요 속성
-  1. **`HashRouter`**, BrowserRouter
-    - `HashRouter` : #으로 router를 구분함 => 다른 서버를 같이 사용할 경우 router구분하기 용이함!
-    - HashRouter사용을 권장함!
+  1. **`HashRouter`** , BrowserRouter
+      - `HashRouter` : #으로 router를 구분함 => 다른 서버를 같이 사용할 경우 router구분하기 용이함!
+      - HashRouter사용을 권장함!
+
     ```js
       //App.js
       import { HashRouter, Route } from "react-router-dom";
@@ -342,6 +343,7 @@ class App extends React.Component {
 
         export default Navigation
       ```
+      
       ```js
         <Link 
             to={{
